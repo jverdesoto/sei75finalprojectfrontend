@@ -9,7 +9,12 @@ export const Logout = () => {
           {
             refresh_token: localStorage.getItem("refresh_token"),
           },
-          { headers: { "Content-Type": "application/json" } },
+          {
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${localStorage.getItem("access_token")}`
+            }
+          },
           { withCredentials: true }
         );
         localStorage.clear();
