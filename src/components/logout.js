@@ -11,11 +11,9 @@ export const Logout = () => {
           },
           {
             headers: {
-              "Content-Type": "application/json",
-              "Authorization": `Bearer ${localStorage.getItem("access_token")}`
+              "Content-Type": "application/json"
             }
-          },
-          { withCredentials: true }
+          }
         );
         localStorage.clear();
         axios.defaults.headers.common["Authorization"] = null;
