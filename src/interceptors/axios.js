@@ -3,13 +3,13 @@ let refresh = false;
 axios.interceptors.response.use(
   (resp) => resp,
   async (error) => {
+    console.log(error.response.status);
     if (error.response.status === 401 && !refresh) {
       refresh = true;
-      console.log(localStorage.getItem("refresh_token"));
       const response = await axios.post(
         `${process.env.REACT_APP_BACKEND_URL}/token/refresh/`,
         {
-          refresh: localStorage.getItem("refresh_token"),
+          refresh: localStorage.getItem("refresh_token")
         },
         {
           headers: {
